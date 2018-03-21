@@ -1,0 +1,91 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int num,i;
+
+struct competidor{
+    char nombre[30];
+    int edad;
+    char sexo[30];
+    char club[80];
+}deportista[30];
+
+void registro(){
+    system("cls");
+    printf("\t\nUSTED DECIDIO IR A REGISTRO.\n\n");
+    printf("Ingrese la cantidad de competidores que desea registrar:");
+    scanf("%i",&num);
+    for(i=1;i<=num;i++){
+        fflush(stdin);
+        printf("\n\n%i.)Ingrese nombre del competidor:",i);
+        gets(deportista[i].nombre);
+        printf("Ingrese la edad del competidor:");
+        scanf("%i",&deportista[i].edad);
+        fflush(stdin);
+        printf("Ingrese el sexo del competidor:");
+        scanf("s",&deportista[i].sexo);
+        fflush(stdin);
+        printf("Ingrese el club al que pertenece:");
+        scanf("%s",&deportista[i].club);
+    }
+    printf("\n\n");
+    fflush(stdin);
+    system("pause");
+}
+
+void ver_info(){
+    system("cls");
+     printf("\t\nUSTED DECIDIO VER INFORMACION DEL COMPETIDOR.\n\n");
+     printf("Aqui vera la informacion de los competidores registrados:");
+     for(i=1;i<=num;i++){
+        fflush(stdin);
+        printf("\n\n-Competidor #%i",i);
+        printf("\nNombre: %s",deportista[i].nombre);
+        fflush(stdin);
+        printf("\nGenero: %s",deportista[i].sexo);
+        printf("\nClub: %s",deportista[i].club);
+        printf("\nEdad: %i",deportista[i].edad);
+        fflush(stdin);
+        printf("\n\nEL COMPETIDOR SERA ASIGNADO SEGUN SU EDAD.\n");
+        printf("TIPOS DE CATEGORIAS:");
+        printf("\n\tINFANTIL <= 15 \n\tJOVEN <= 30\n\tMAYOR > 30\n\n");
+        if (deportista[i].edad <= 15){
+            printf("El competidor pertenece a la categoria infantil.");
+        }else{
+            if(deportista[i].edad <=30){
+                printf("El competidor pertenece a la categoria joven");
+            }else{
+                printf("El competidor pertenece a la categoria mayor");
+            }
+        }
+     }
+     printf("\n\n");
+     system("pause");
+}
+
+int main(){
+    int a,b;
+    while(num!=3){
+    system("cls");
+    printf("\t\nBIEMVENIDO, AQUI PODRA INGREGAR Y VER INFORMACION.\n\n");
+    printf("Ingrese un numero segun lo que desee hacer:\n");
+    printf("1.)Ver Informacion De Los Competidores.\n");
+    printf("2.)Registrar Informacion Del Competidor.\n");
+    printf("3.)Salir Del Programa.\n");
+    printf("Ingrese Numero:");
+    scanf("%i",&num);
+    switch(num){
+case 1:
+    ver_info();
+    break;
+case 2:
+    registro();
+    break;
+default:
+    printf("USTED DECIDIO SALIR.\n\n");
+    break;
+    }
+    }
+    system("pause");
+    return 0;
+}

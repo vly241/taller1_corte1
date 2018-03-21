@@ -1,0 +1,19 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(){
+int fact=0;
+int b,c;
+printf("Ingrese numero para sacarle el factorial:");
+scanf("%i",&fact);
+
+c=fact;
+for(b=fact-1;b>=1;b--){
+
+    c=c*b;
+    printf("%i x ",b);
+}
+printf("=%i",c);
+getch();
+return;
+}
